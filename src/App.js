@@ -1,60 +1,52 @@
 import React , { useState } from 'react';
 import './App.css';
 
-import  Results from './components/Results';
-import Search from './components/Search';
+
 import axios from 'axios';
+import SearchBox from './components/Search';
+import Result from './components/Result';
+import ReactMap from './components/Map';
 
 
 
-const randomUrl = "https://en.wikipedia.org/wiki/Special:Random";
-const wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=";
 
 function App() {
 
- const [result, setResult] = useState([]);
+ const [result, setResult] = useState({});
 const [searchValue, setSearchValue] = useState("");
 
-const searchArticles =   () => {
-  const wikilink = wikiUrl + searchValue + "&origin=*&format=json";
-  axios.get(wikilink).then(response => setResult(response.data.query.search)).catch(err => console.log(err));
-  
-}
-  
-const randomArticle = (e) => {
+const IpUrl = "https://geo.ipify.org/api/v2/country?apiKey=at_2pF1In4avaT5wFLlvOEtabs2xsIbL&ipAddress=" + searchValue;
+
+
+const handleSubmit = async (e) => {
+
   e.preventDefault();
+  
+  const res  = await axios.get(IpUrl).then((res)=> res.data)
 
-  window.open(randomUrl, "_blank")
-}
-
-
-
-
-const handleSubmit = (event) => {
-  event.preventDefault();
+  console.log(res);
+  setResult(res);
+  
  
-  searchArticles();
+
 };
   return (
     <>
      <div className="container" >
     <div className="navBar">
 
-<h2 className="navBar-header">Hello! Welcome to <span className="bold">INFOCYCLOPEDIA</span></h2>
-
-
-
-
-    </div>
-    </div>
-    <div className ="container">
-      <div className="search-component">
-        <Search randomArticle={randomArticle} searchArticles={searchArticles} setSearchValue={setSearchValue} handleSubmit={handleSubmit}/>
+<SearchBox  setSearchValue={setSearchValue} handleSubmit ={handleSubmit}/> 
+      </div> 
+      <Result  result={result}/>
+      <div className="tobi">
+        
+<ReactMap />
       </div>
-      
-      <div className="result-component">
-        <Results result ={result} />
-      </div>
+
+
+
+
+
     </div>
     </>
   );

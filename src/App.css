@@ -1,23 +1,70 @@
-.navBar {
-    display: flex;
-    width: 100%;
-    height: 60px;
-    background-color:  #2096b9;
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    z-index: 999;
-border-bottom-left-radius: 30px;
-border-bottom-right-radius: 30px;
-    margin-bottom: 100px;
-}
-.navBar-header {
+
+ @import url(https://fonts.google.com/specimen/Rubik);
+
+* {
+    font-family: Rubikon;
+    box-sizing: border-box;
     
-    align-items: center;
-    margin: auto;
-    color: white;
-    font-weight: 500;
-    letter-spacing: 0.09cm;
-    font-family: montserrat;
+}
+.container {
+    
+}
+.navBar  {
+  
+
+        background-image: url(C:\Users\Joshua\Desktop\ip-tracker\public\pattern-bg.png);
+        
+        width: 100%;
+        height: 160px; 
+        
+        background-repeat: no-repeat;
+padding: 0;
+        margin: 0;
+    
+}
+.tobi {
+    background-color: black;
+    top: 160px;
+    z-index: 2;
+
+}
+h4 {
+ margin: 0;
+}
+
+
+@media only screen and (max-width: 525px) {
+    @import url(https://fonts.google.com/specimen/Rubik);
+
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+        
+    }
+    .container {
+        
+    }
+    .navBar  {
+      
+    
+            background-image: url(C:\Users\Joshua\Desktop\ip-tracker\public\pattern-bg.png);
+            
+            width: 100%;
+            height: 240px; 
+            
+            background-repeat: no-repeat;
+    padding: 0;
+            margin: 0;
+        
+    }
+    .tobi {
+        background-color: black;
+        top: 240px;
+        z-index: 2;
+    
+    }
+    h4 {
+     margin: 0;
+    }
+    
 }
